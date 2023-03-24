@@ -6,17 +6,17 @@ from heros.serializers import HeroSerializer
 
 # @api_view(['GET'])
 # def api_home(request):
-#     instance = Hero.objects.all().order_by('?').first()
+#     obj = Hero.objects.all().order_by('?').first()
 #     data = {}
-#     if instance:
-#         data = HeroSerializer(instance).data
+#     if obj:
+#         data = HeroSerializer(obj).data
 #     return Response(data)
 
 @api_view(['POST'])
 def api_home(request):
     serializer = HeroSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
-        # instance = serializer.save()
-        # print(instance)
+        # obj = serializer.save()
+        # print(obj)
         return Response(serializer.data)
     return Response({'invalid': 'not good data'}, status=400)
